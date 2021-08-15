@@ -1,0 +1,694 @@
+/********************************************************************IMPORTS*********************************************************************/
+
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+@import url(https://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css);
+
+/**********************************************************************ANIMATIONS******************************************************************/
+
+@keyframes click-wave {
+  0% {
+    height: 40px;
+    width: 40px;
+    opacity: 0.35;
+    position: relative;
+  }
+  100% {
+    height: 200px;
+    width: 200px;
+    margin-left: -80px;
+    margin-top: -80px;
+    opacity: 0;
+  }
+}
+@keyframes searchActive {
+	from{ transform: rotateY(180deg) }
+	to{ transform: rotateY(0deg); }
+}
+@keyframes effect1 {
+	from{ -webkit-transform: translateY(15px); opacity:0; }
+	to{ -webkit-transform: translateY(0px); opacity:1; }
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
+
+/******************************************************************************HTML*****************************************************************/
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+     padding: 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+/*****************************************************************************LOGIN***************************************************************/
+
+.login-body {
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+  background: linear-gradient(#141e30, #243b55);
+}
+
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.login-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.login-box .user-box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
+
+.login-box form button {
+
+  border: none;
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #03e9f4;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px;
+  cursor: pointer;
+}
+
+.login-box button:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+}
+
+.login-box button span {
+  position: absolute;
+  display: block;
+}
+
+.login-box button span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: btn-anim1 1s linear infinite;
+}
+
+.login-box button span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #03e9f4);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+.login-box button span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+
+.login-box button span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+
+/******************************************************************************MAP*************************************************************/
+
+#map {
+    height: 500px;
+}
+
+/*********************************************************************************CONTAINER***********************************************************/
+
+.container{
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/******************************************************************************SEARCH FORM************************************************************/
+
+#form-select {
+    display: flex;
+    position: absolute;
+    left: 40px;
+    flex-direction: column;
+    top: 50px;
+    width: 11%;
+    z-index: 100000;
+    padding: 0 30px;
+    background: rgba(255,255,255,0.4);
+}
+
+
+
+/* SELECT */
+
+select {
+  border: none;
+  padding: 10px 20px;
+  background-color: #2880ca;
+  color: white;
+  font-size: 1em;
+  margin: 15px 0;
+  box-shadow: 10px 7px 5px rgb(0 0 0 / 50%);
+  cursor: pointer;
+}
+
+option:first-child {
+    background-color: #4e606f;
+}
+
+option {
+    background-color: #2880ca;
+    color: white;
+    border-top: 1px solid black;
+}
+
+#search-form, #back-tab {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    font-family: 'Neucha', cursive;
+    font-size: 17px;
+    /* font-weight: bold; */
+    cursor: pointer;
+    background: #a9a9a9;
+    color: #FFF;
+    border: none;
+    padding: 5px 10px 6px 20px;
+    top: -14px;
+    border-radius: 20px;
+    margin-left: 0px;
+    box-shadow: 10px 7px 5px black;
+    margin-top: 15px;
+    transition: all 500ms;
+}
+
+.title-search{
+        text-align: center;
+    margin: 20px 0;
+}
+#search-form.back{
+    margin-top: 20px;
+}
+
+form#center {
+    position: absolute;
+    top: 10px;
+    z-index: 100000;
+    left: 40px;
+}
+
+#label-center {
+    width: 100%;
+    background-color: rgba(255,255,255,0.6);
+    padding: 0 32px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+input#center-input {
+    border: none;
+    background: none;
+    padding: 10px;
+    width: 100%;
+}
+/**********************************************************************************TABLE*******************************************************************/
+
+#table, #donnees{
+    height: auto;
+    max-height: 598px;
+    overflow-y: scroll;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #2880ca;
+    color: white;
+}
+table{
+    position: relative;
+    border-collapse: collapse;
+    font-size: 15px;
+    margin: 10px auto;
+    text-align: center;
+}
+table tr:first-of-type th {
+    background-color: #4e606f;
+    position: sticky;
+    top: 10px;
+}
+tbody{
+    position: relative;
+}
+
+th, td {
+    border: 1px solid #207763;
+    padding: 5px;
+}
+
+#donnees{
+    display: none;
+}
+
+/***************************************************************************SIDEBAR TABLE**********************************************************************/
+
+.sidebar-content {
+    overflow: auto;
+    scrollbar-width: thin;
+    /* scrollbar-color: black white; */
+}
+
+.sidebar-content::-webkit-scrollbar {
+  width: 1px;
+}
+ 
+.sidebar-content::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+.sidebar-content::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+/**************************************************************************FORM UPLOAD XLSX**************************************************************************/
+
+#objForm{
+    cursor: pointer;
+    text-align: center;
+    padding: 5px 30px;
+    color: white;
+    width: 50%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #4e606f;
+}
+.form-add, .move-upload{
+    width: 50%;
+    margin: 20px auto;
+    padding: 10px 0 20px 0;
+    text-align: center;
+    position: absolute;
+    top: -6000px;
+    background-color: #4e606f;
+    transition: all 1s;
+    color: white;
+}
+#cross {
+    position: absolute;
+    right: 1%;
+    cursor: pointer;
+    color: white;
+}
+
+/* Button Styles */
+
+.button {
+  display: inline-flex;
+  height: 40px;
+  width: 150px;
+  border: 2px solid #BFC0C0;
+  margin: 20px 20px 20px 20px;
+  color:white;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: .8em;
+  letter-spacing: 1.5px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.p {
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+.style-input {
+    width: 21%;
+    margin: 10px auto;
+}
+
+#submit-file {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  left: 42%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#submit-file .p {
+  position: relative;
+  left: 0;
+  transition: all .35s ease-Out;
+}
+
+#dub-arrow {
+  width: 100%;
+  height: 100%;
+  background: #BFC0C0;
+  left: -200px;
+  position: absolute;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .35s ease-Out;
+  bottom: 0;
+}
+
+#submit-file i {
+  width: 20px;
+  height: auto;
+  font-size: 1.5em;
+}
+
+#submit-file:hover #dub-arrow {
+  left: 0;
+}
+
+#submit-file:hover .p {
+  left: 150px;
+}
+
+/******************************************************************************FORM UPLOAD******************************************************************/
+
+#form-upload{
+  text-align:left;
+}
+
+#excel-file {
+    position: absolute;
+    left: -9999px;
+}
+
+label[for="excel-file"]{
+  padding:0.5em;  
+  display:inline-block;
+  background:#2880ca;
+  cursor:pointer;
+      color: white;
+      transition: all 200ms;
+}
+label[for="excel-file"]:hover{
+    background:#2880ca;
+    color: red;
+}
+#filename{
+  float:left;
+  width:150px;
+  white-space: nowrap;
+  overflow:hidden;
+  background:#2880ca;
+}
+.option-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  top: 13.33333px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  width: 40px;
+  transition: all 0.15s ease-out 0s;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+  z-index: 1000;
+}
+.option-input:hover {
+  background: #9faab7;
+}
+.option-input:checked {
+  background: #2880ca;
+}
+.option-input:checked::before {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  content: '✔';
+  display: inline-block;
+  font-size: 26.66667px;
+  text-align: center;
+  line-height: 40px;
+}
+.option-input:checked::after {
+  -webkit-animation: click-wave 0.65s;
+  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s;
+  background: #2880ca;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+.option-input.radio {
+  border-radius: 50%;
+}
+.option-input.radio::after {
+  border-radius: 50%;
+}
+
+div#add-formateur {
+    position: absolute;
+    top: -1120px;
+}
+
+
+/***********************************************************************************RESPONSIVE***********************************************************************/
+
+@media (max-width:1440px){
+    #form-select {
+        left: 30px;
+    }
+    #filename {
+        width: 100px;
+    }
+    #submit-file {
+        left: 40%;
+    }
+    #table{
+        width: 100%;
+    }
+}
+
+@media (max-width:1024px){
+  .container{
+    width: 90%;
+  }
+    #form-select {
+        display: block;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+    select{
+      width: 180%;
+    }
+    table {
+        font-size: 12px;
+    }
+    th, td {
+        padding: 2px;
+    }
+    .style-input {
+        width: 31%;
+    }
+    #submit-file {
+        left: 35%;
+    }
+}
+@media (max-width:768px){
+        select{
+      width: 240%;
+    }
+    table {
+        font-size: 12px;
+    }
+    th, td {
+        padding: 2px;
+    }
+    .style-input {
+        width: 41%;
+    }
+    #filename {
+        width: 90px;
+    }
+    #submit-file {
+        left: 30%;
+    }
+    .option-input {
+        top: 4.33333px;
+        height: 20px;
+        width: 20px;
+    }
+    .option-input:checked::before {
+        height: 20px;
+        width: 20px;
+        font-size: 19.66667px;
+        line-height: 20px;
+    }
+    #search-form {
+        margin-left: 20px;
+    }
+}
+@media (max-width:730px){
+    .table1{
+        display: none;
+    }
+}
+@media (max-width:600px){
+    #form-select{
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .selectCF li ul {
+        position: relative;
+    }
+    #search-form {
+        margin-left: 0;
+    }
+        select{
+      width: 60%;
+    }
+    #table{
+        display: none;
+    }
+    #donnees{
+        display: block;
+    }
+    .style-input {
+        width: 71%;
+    }
+    #filename {
+        width: 90px;
+    }
+    #submit-file {
+        left: 13%;
+    }
+    .option-input {
+        top: 4.33333px;
+        height: 20px;
+        width: 20px;
+    }
+    .option-input:checked::before {
+        height: 20px;
+        width: 20px;
+        font-size: 17.66667px;
+        line-height: 20px;
+    }
+}

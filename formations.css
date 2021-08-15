@@ -1,0 +1,43 @@
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+div#surround {
+    display: flex;
+    justify-content: space-around;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+div#fo {
+    display: flex;
+    flex-direction: column;
+}
+.table{
+    height: auto;
+    max-height: 210px;
+    overflow-y: scroll;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #2880ca;
+    color: white;
+}
+table{
+    position: relative;
+    border-collapse: collapse;
+    font-size: 15px;
+    margin: 10px auto;
+    text-align: center;
+}
+table tr:first-of-type th {
+    background-color: #4e606f;
+    position: sticky;
+    top: 10px;
+}
+th, td {
+    border: 1px solid #207763;
+    padding: 5px;
+}
